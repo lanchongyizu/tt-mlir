@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.20.0)
 project(ttmlir-toolchain LANGUAGES CXX C)
 
 set(FLATBUFFERS_VERSION "fb9afbafc7dfe226b9db54d4923bfb8839635274")
-set(LLVM_PROJECT_VERSION "f8cb7987c64dcffb72414a40560055cb717dbf74")
+set(LLVM_PROJECT_VERSION "origin/tt-mlir")
 set(STABLEHLO_VERSION "e07debd5e257ec1e118f18c54068977b89f03b2f")
 set(SHARDY_VERSION "a8f93f165dd5e56a44c300ed68bb5233c43dd30c")
 set(LLVM_BUILD_TYPE MinSizeRel CACHE STRING "Build type for LLVM")
@@ -66,8 +66,9 @@ ExternalProject_Add(
     -DCMAKE_C_FLAGS=-D_LIBCPP_HAS_NO_LIBRARY_ALIGNED_ALLOCATION
     SOURCE_SUBDIR llvm
     LIST_SEPARATOR ","
-    GIT_REPOSITORY https://github.com/llvm/llvm-project.git
+    GIT_REPOSITORY https://github.com/lanchongyizu/llvm-project.git
     GIT_TAG ${LLVM_PROJECT_VERSION}
+    GIT_SHALLOW TRUE
     GIT_PROGRESS OFF
     GIT_REMOTE_UPDATE_STRATEGY CHECKOUT
     UPDATE_DISCONNECTED ON
